@@ -15,7 +15,7 @@ docker pull rakgenius/quarkus-greetings
 and run the image image using
 
 ```bash
-ocker run -i -d --rm -p 8080:8080 rakgenius/quarkus-greetings
+docker run -i -d --rm -p 8080:8080 rakgenius/quarkus-greetings
 ```
 
 Then navigate to
@@ -50,12 +50,12 @@ Once the prerequisite softwares are installed you can continue further
 
 3 . To build the native packages, run
 ```bash
-./mvnw package -DksipTests -Pnative
+./mvnw package -DskipTests -Pnative
 ```
 
 4 . Run the application using
 ```bash
-java -jar target/greetings-1.0.jar
+java -jar target/greetings-1.0-runner.jar
 ```
 
 5 . Run the native application using
@@ -75,7 +75,7 @@ Below are the command to build the docker image and to publish it to docker hub
 
 1 . After creatin the native package, run the below command
 ```bash
-./mvnw package -Pnative -Dnative-image.docker-build=true
+./mvnw package -DskipTests -Pnative -Dnative-image.docker-build=true
 ```
 
 2 . Create the docker image using

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -148,5 +148,47 @@
 </div>
 
 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quote</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/wingcss/0.1.8/wing.min.css"/>
+    <!-- Load AngularJS -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("QOTDManagement", []);
+
+        app.controller("QOTDController", function ($scope, $http) {
+            $scope.qotd = '';
+
+            _getQotd();
+
+            function _getQotd() {
+                $http({
+                    method: 'GET',
+                    url: '/greetings'
+                }).then(function successCallback(response) {
+                    $scope.qotd = response.data;
+                });
+            }
+
+            function _success(response) {
+                console.log(response);
+            }
+        })
+    </script>
+</head>
+
+<body ng-app="QOTDManagement" ng-controller="QOTDController">
+    <div class="container">
+        <h1>Thought for the day</h1>
+        <br>
+        <br>
+        <h2>{{qotd}}</h2>
+    </div>
 </body>
 </html>
